@@ -38,7 +38,7 @@ const SearchBar = ({ onSearch }) => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Şehir veya konum ara..."
-            className="w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-black" 
           />
         </div>
         

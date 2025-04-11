@@ -1,5 +1,5 @@
-// pages/index.js
 "use client";
+
 import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import SearchBar from './components/SearchBar';

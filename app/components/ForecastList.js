@@ -1,7 +1,11 @@
-// components/ForecastList.js
+"use client";
+
 import WeatherIcon from './WeatherIcon';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const ForecastList = ({ forecast }) => {
+  const { darkMode } = useTheme();
+  
   if (!forecast || !forecast.forecastday) return null;
 
   return (
@@ -18,10 +22,14 @@ const ForecastList = ({ forecast }) => {
             return (
               <div 
                 key={day.date} 
-                className="bg-white rounded-xl shadow-md p-4 w-40 flex-shrink-0 transition-transform hover:scale-105"
+                className={`${
+                  darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+                } rounded-xl shadow-md p-4 w-40 flex-shrink-0 transition-all hover:shadow-lg`}
               >
-                <p className="text-center font-medium text-gray-800">{dayName}</p>
-                <p className="text-center text-xs text-gray-500">{formattedDate}</p>
+                <p className="text-center font-medium">{dayName}</p>
+                <p className={`text-center text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                  {formattedDate}
+                </p>
                 
                 <div className="flex justify-center my-2">
                   <WeatherIcon 
@@ -31,14 +39,16 @@ const ForecastList = ({ forecast }) => {
                   />
                 </div>
                 
-                <p className="text-center text-sm mt-1 mb-2 text-gray-700">{day.day.condition.text}</p>
+                <p className={`text-center text-sm mt-1 mb-2 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  {day.day.condition.text}
+                </p>
                 
                 <div className="flex justify-between items-center text-sm">
                   <span className="font-bold text-red-500">{Math.round(day.day.maxtemp_c)}°</span>
                   <span className="text-blue-500">{Math.round(day.day.mintemp_c)}°</span>
                 </div>
                 
-                <div className="mt-2 pt-2 border-t text-xs text-gray-500">
+                <div className={`mt-2 pt-2 border-t ${darkMode ? 'border-gray-700 text-gray-400' : 'border-gray-200 text-gray-500'} text-xs`}>
                   <div className="flex justify-between">
                     <span>Yağış:</span>
                     <span>%{day.day.daily_chance_of_rain}</span>

@@ -1,7 +1,11 @@
-// components/HourlyForecast.js
+"use client";
+
 import WeatherIcon from './WeatherIcon';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const HourlyForecast = ({ hourData }) => {
+  const { darkMode } = useTheme();
+  
   if (!hourData || !hourData.length) return null;
 
   // Şu anki saatten sonraki 24 saati göster
@@ -12,7 +16,7 @@ const HourlyForecast = ({ hourData }) => {
     <div className="mt-8 mb-8">
       <h2 className="text-xl font-bold mb-4">Saatlik Tahmin</h2>
       
-      <div className="overflow-x-auto pb-4">
+      <div className="overflow-auto pb-4">
         <div className="flex space-x-4 min-w-max">
           {nextHours.map((hour) => {
             const hourTime = new Date(hour.time);
@@ -21,9 +25,11 @@ const HourlyForecast = ({ hourData }) => {
             return (
               <div
                 key={hour.time}
-                className="bg-white rounded-xl shadow-md p-3 w-24 flex-shrink-0 transition-transform hover:scale-105"
+                className={`${
+                  darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'
+                } rounded-xl shadow-md p-3 w-24 flex-shrink-0 transition-all hover:shadow-lg`}
               >
-                <p className="text-center text-sm font-medium text-gray-800">{displayHour}</p>
+                <p className="text-center text-sm font-medium">{displayHour}</p>
                 
                 <div className="flex justify-center my-2">
                   <WeatherIcon 
@@ -33,9 +39,9 @@ const HourlyForecast = ({ hourData }) => {
                   />
                 </div>
                 
-                <p className="text-center font-bold text-gray-800">{Math.round(hour.temp_c)}°C</p>
+                <p className="text-center font-bold">{Math.round(hour.temp_c)}°C</p>
                 
-                <div className="mt-1 text-center text-xs text-gray-500">
+                <div className={`mt-1 text-center text-xs ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
                   {hour.chance_of_rain > 0 && (
                     <span className="flex items-center justify-center">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
