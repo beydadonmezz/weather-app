@@ -1,4 +1,5 @@
 // components/SearchBar.js
+"use client";
 import { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
