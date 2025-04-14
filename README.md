@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather App
+
+A modern weather application that provides real-time weather data, forecasts, and location-based information. Built with Next.js and styled with Tailwind CSS.
+
+
+## Features
+
+- **Current Weather Conditions**: View real-time temperature, feels like, wind, humidity, and pressure.
+- **Location-based Search**: Find weather information for any city or location.
+- **Geolocation Support**: Get weather data for your current location with one click.
+- **Hourly Forecast**: Detailed hour-by-hour weather forecast for the next 24 hours.
+- **7-Day Forecast**: Extended weekly weather outlook with high/low temperatures and precipitation chance.
+- **Animated Weather Icons**: Dynamic icons that represent different weather conditions.
+- **Dark/Light Theme**: Toggle between dark and light modes for comfortable viewing.
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
+
+## Technologies Used
+
+- **Next.js**: React framework for production with App Router
+- **Tailwind CSS**: Utility-first CSS framework
+- **WeatherAPI**: Third-party API for accurate weather data
+- **Context API**: For state management (theme toggle)
+- **Axios**: For API requests
+- **React Icons**: For UI icons
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
+- Node.js (v14 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/beydadonmezz/weather-app.git
+   cd weather-app
+
+Install dependencies:
+bashnpm install
+# or
+yarn install
+
+Create a .env.local file in the root directory and add your WeatherAPI key:
+NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
+You can get a free API key from WeatherAPI.com
+Start the development server:
+bashnpm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Search for a Location: Enter a city name or location in the search bar and press Enter or click the search button.
+Get Your Location's Weather: Click the "Use My Location" button to get weather data for your current location.
+Toggle Dark/Light Mode: Click the theme toggle button in the header to switch between dark and light themes.
+View Forecast Details: Scroll horizontally to see more hourly or weekly forecast data.
 
-## Learn More
+Project Structure
+weather-app/
+├── app/                  # Next.js App Router
+├── components/           # React components
+│   ├── ErrorMessage.js
+│   ├── ForecastList.js
+│   ├── HourlyForecast.js
+│   ├── Layout.js
+│   ├── LoadingSpinner.js
+│   ├── SearchBar.js
+│   ├── WeatherCard.js
+│   └── WeatherIcon.js
+├── contexts/             # React context providers
+│   └── ThemeContext.js
+├── utils/                # Utility functions
+│   └── api.js
+├── public/               # Static assets
+├── styles/               # Global styles
+└── .env.local            # Environment variables (not in repo)
+Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+Add weather alerts and notifications
+Implement air quality index indicators
+Add temperature and precipitation charts
+Add multi-language support
+Save favorite locations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+Acknowledgments
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Weather data provided by WeatherAPI.com
+Icons used from React Icons
 
-## Deploy on Vercel
+Author
+Beyda - https://github.com/beydadonmezz
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to use this project as a starting point for your own weather application or as a portfolio piece to showcase your front-end development skills.
